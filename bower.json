@@ -1,0 +1,30 @@
+{
+	"name": "keyboard",
+	"version": "0.1.1",
+	"main": "dist/keyboard.min.js",
+	"dependencies": {
+		"springroll": "master"
+	},
+	"devDependencies": {
+		"easeljs": "https://github.com/SpringRoll/EaselJS.git",
+		"tweenjs": "https://github.com/SpringRoll/TweenJS.git",
+		"google-code-prettify": "*",
+		"bind-polyfill": "*"
+	},
+	"ignore": [
+		"Gruntfile.js",
+		"tasks",
+		"examples",
+		"docs",
+		"src",
+		"test",
+		"tools",
+		".bowerrc",
+		".editorconfig",
+		".travis.yml",
+		".gitattributes",
+		"library.json",
+		"package.json",
+		".gitignore"
+	]
+}
