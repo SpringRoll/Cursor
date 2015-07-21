@@ -1,4 +1,4 @@
-/*! CustomCursor 0.0.1 */
+/*! CustomCursor 0.1.0 */
 /**
  * @namespace springroll
  */

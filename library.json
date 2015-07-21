@@ -1,11 +1,10 @@
 {
 	"name": "CustomCursor",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "A SpringRoll plugin to handle custom cursors",
 	"url": "https://github.com/SpringRoll/CustomCursor",
 	"output": "empty",
-	"main": [
-	],
+	"main": [],
 	"modules": {
 		"easeljs": {
 			"output": "easeljs-customcursor",
