@@ -11,12 +11,6 @@
 			"main": [
 				"src/EaselJSCursorPlugin.js"
 			]
-		},
-		"pixi": {
-			"output": "pixi-cursor",
-			"main": [
-				"src/PixiCursorPlugin.js"
-			]
 		}
 	}
 }
