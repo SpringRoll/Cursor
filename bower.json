@@ -1,7 +1,7 @@
 {
-	"name": "keyboard",
-	"version": "0.1.0",
-	"main": "dist/keyboard.min.js",
+	"name": "springroll-cursor",
+	"version": "0.2.0",
+	"main": "dist/modules/easeljs-cursor.min.js",
 	"dependencies": {
 		"springroll": "*"
 	},
