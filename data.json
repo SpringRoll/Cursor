@@ -1,0 +1,212 @@
+{
+    "project": {
+        "name": "SpringRollCursor",
+        "description": "A SpringRoll plugin to handle custom cursors",
+        "version": "0.2.0",
+        "url": "https://github.com/SpringRoll/Cursor"
+    },
+    "files": {
+        "src/EaselJSCursorPlugin.js": {
+            "name": "src/EaselJSCursorPlugin.js",
+            "modules": {},
+            "classes": {
+                "springroll.Application": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "springroll": 1
+            }
+        }
+    },
+    "modules": {},
+    "classes": {
+        "springroll.Application": {
+            "name": "springroll.Application",
+            "shortname": "Application",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "springroll",
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 14,
+            "description": "Plugin for EaselJS Cursor to the SpringRoll Application. All these\nproperties and methods are automatically added to new Applications\nwhen this dependency is included in a project."
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 1,
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 25,
+            "description": "The cursor settings to use for a custom cursor.",
+            "itemtype": "property",
+            "name": "options.cursorSettings",
+            "type": "Object",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 36,
+            "description": "The url to a JSON file describing the atlas that cursor images can be found in.",
+            "itemtype": "property",
+            "name": "options.cursorSettings.atlasData",
+            "type": "String",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 42,
+            "description": "The url to a image file that cursor images can be found in.",
+            "itemtype": "property",
+            "name": "options.cursorSettings.atlasImage",
+            "type": "String",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 48,
+            "description": "The url to a image file that is the normal cursor. If atlasData and atlasImage are\nbeing used, this is the frame/sprite name instead.",
+            "itemtype": "property",
+            "name": "options.cursorSettings.normal",
+            "type": "String",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 55,
+            "description": "The url to a image file that is the pointer cursor. If atlasData and atlasImage are\nbeing used, this is the frame/sprite name instead.",
+            "itemtype": "property",
+            "name": "options.cursorSettings.pointer",
+            "type": "String",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 62,
+            "description": "The origin for the normal cursor state. The default is the center of the art.",
+            "itemtype": "property",
+            "name": "options.cursorSettings.normalOrigin",
+            "type": "Object",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 68,
+            "description": "The origin for the pointer cursor state. The default is the center of the art.",
+            "itemtype": "property",
+            "name": "options.cursorSettings.pointerOrigin",
+            "type": "Object",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 74,
+            "description": "The container for the cursor object",
+            "itemtype": "property",
+            "name": "cursor",
+            "type": "createjs.Container",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 81,
+            "description": "The image for the default cursor display",
+            "itemtype": "property",
+            "name": "cursorNormal",
+            "type": "createjs.Bitmap",
+            "access": "private",
+            "tagname": "",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 89,
+            "description": "The image for the cursor pointer display",
+            "itemtype": "property",
+            "name": "cursorPointer",
+            "type": "createjs.Bitmap",
+            "access": "private",
+            "tagname": "",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 97,
+            "description": "Handler when the mouse leaves the stage",
+            "itemtype": "method",
+            "name": "_stageOut",
+            "access": "private",
+            "tagname": "",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 105,
+            "description": "Handler when the mouse enters the stage",
+            "itemtype": "method",
+            "name": "_stageIn",
+            "access": "private",
+            "tagname": "",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 113,
+            "description": "Handler when the mouse moves over the stage",
+            "itemtype": "method",
+            "name": "_onMouseMove",
+            "access": "private",
+            "tagname": "",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        },
+        {
+            "file": "src/EaselJSCursorPlugin.js",
+            "line": 121,
+            "description": "Handler when the cursor changes",
+            "itemtype": "method",
+            "name": "_stageOut",
+            "access": "private",
+            "tagname": "",
+            "default": "null",
+            "class": "springroll.Application",
+            "namespace": "springroll"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type",
+            "line": " src/EaselJSCursorPlugin.js:1"
+        }
+    ]
+}
