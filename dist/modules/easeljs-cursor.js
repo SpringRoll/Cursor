@@ -2,7 +2,7 @@
 /**
  * @namespace springroll
  */
-(function()
+(function ()
 {
 	// Include classes
 	var ApplicationPlugin = include('springroll.ApplicationPlugin');
@@ -13,62 +13,69 @@
 	var Bitmap = include('createjs.Bitmap');
 
 	/**
-	 * Create an app plugin for EaselJSCursorPlugin, all properties and methods documented
-	 * in this class are mixed-in to the main Application
-	 * @class EaselJSCursorPlugin
-	 * @extends springroll.ApplicationPlugin
+	 * Plugin for EaselJS Cursor to the SpringRoll Application. All these
+	 * properties and methods are automatically added to new Applications
+	 * when this dependency is included in a project.
+	 * @class Application
 	 */
 	var plugin = new ApplicationPlugin();
 
 	// Init the Keyboard
-	plugin.setup = function()
+	plugin.setup = function ()
 	{
 		/**
 		 *	The cursor settings to use for a custom cursor.
 		 *	@property {Object} options.cursorSettings
 		 */
 		this.options.add("cursorSettings", null, true);
-		
+
 		// ensure that keepMouseover is true, so that the cursor can continue to move during
 		// state transitions
 		if (this.options._options.displayOptions)
 			this.options._options.displayOptions.keepMouseover = true;
-		
+
 		/**
 		 * The url to a JSON file describing the atlas that cursor images can be found in.
-		 * @property {String} [options.cursorSettings.atlasData]
+		 * @property {String} options.cursorSettings.atlasData
+		 * @default  null
 		 */
-		
+
 		/**
 		 * The url to a image file that cursor images can be found in.
-		 * @property {String} [options.cursorSettings.atlasImage]
+		 * @property {String} options.cursorSettings.atlasImage
+		 * @default  null
 		 */
-		
+
 		/**
 		 * The url to a image file that is the normal cursor. If atlasData and atlasImage are
 		 * being used, this is the frame/sprite name instead.
-		 * @property {String} [options.cursorSettings.normal]
+		 * @property {String} options.cursorSettings.normal
+		 * @default  null
 		 */
-		
+
 		/**
 		 * The url to a image file that is the pointer cursor. If atlasData and atlasImage are
 		 * being used, this is the frame/sprite name instead.
-		 * @property {String} [options.cursorSettings.pointer]
+		 * @property {String} options.cursorSettings.pointer
+		 * @default  null
 		 */
-		
+
 		/**
 		 * The origin for the normal cursor state. The default is the center of the art.
-		 * @property {Object} [options.cursorSettings.normalOrigin]
+		 * @property {Object} options.cursorSettings.normalOrigin
+		 * @default  null
 		 */
-		
+
 		/**
 		 * The origin for the pointer cursor state. The default is the center of the art.
-		 * @property {Object} [options.cursorSettings.pointerOrigin]
+		 * @property {Object} options.cursorSettings.pointerOrigin
+		 * @default  null
 		 */
-		
+
 		/**
 		 * The container for the cursor object
 		 * @property {createjs.Container} cursor
+		 * @default  null
 		 */
 		this.cursor = null;
 
@@ -76,6 +83,7 @@
 		 * The image for the default cursor display
 		 * @property {createjs.Bitmap} cursorNormal
 		 * @private
+		 * @default  null
 		 */
 		this._cursorNormal = null;
 
@@ -83,6 +91,7 @@
 		 * The image for the cursor pointer display
 		 * @property {createjs.Bitmap} cursorPointer
 		 * @private
+		 * @default  null
 		 */
 		this._cursorPointer = null;
 
@@ -90,6 +99,7 @@
 		 * Handler when the mouse leaves the stage
 		 * @method _stageOut
 		 * @private
+		 * @default  null
 		 */
 		this._stageOut = null;
 
@@ -97,6 +107,7 @@
 		 * Handler when the mouse enters the stage
 		 * @method _stageIn
 		 * @private
+		 * @default  null
 		 */
 		this._stageIn = null;
 
@@ -104,6 +115,7 @@
 		 * Handler when the mouse moves over the stage
 		 * @method _onMouseMove
 		 * @private
+		 * @default  null
 		 */
 		this._onMouseMove = null;
 
@@ -111,25 +123,26 @@
 		 * Handler when the cursor changes
 		 * @method _stageOut
 		 * @private
+		 * @default  null
 		 */
 		this._onCursorChange = null;
-		
+
 		// don't do anything on mobile
 		if (this.hasTouch) return;
-		
+
 		// load assets during the standard loading phase from ConfigPlugin
 		this.once("loading", loadAssets.bind(this));
 	};
-	
+
 	function loadAssets(assets)
 	{
 		// don't do anything on mobile
 		if (this.hasTouch) return;
-		
+
 		var options = this.options.cursorSettings;
 
 		if (!options) return;
-		
+
 		var cursorAssets;
 		if (options.atlasData && options.atlasImage)
 		{
@@ -146,24 +159,25 @@
 				cursorPointer: options.pointer
 			};
 		}
-		assets.push({
+		assets.push(
+		{
 			id: 'CursorAssets',
 			assets: [cursorAssets],
 			complete: onAssetsLoaded.bind(this)
 		});
 	}
-	
+
 	function onAssetsLoaded(results)
 	{
 		// don't do anything on mobile
 		if (this.hasTouch) return;
-		
+
 		// Setup binds
 		this._stageOut = stageOut.bind(this);
 		this._stageIn = stageIn.bind(this);
 		this._onMouseMove = onMouseMove.bind(this);
 		this._onCursorChange = onCursorChange.bind(this);
-		
+
 		// Add the stage listeners
 		var stage = this.display.stage;
 		stage.addEventListener("mouseleave", this._stageOut);
@@ -235,7 +249,7 @@
 			cursorPointer.regX = cursorPointer.image.width * 0.5;
 			cursorPointer.regY = cursorPointer.image.height * 0.5;
 		}
-		
+
 		cursor.addChild(cursorNormal, cursorPointer);
 		cursorPointer.visible = false;
 
@@ -243,35 +257,35 @@
 		this.cursor = cursor;
 		this._cursorNormal = cursorNormal;
 		this._cursorPointer = cursorPointer;
-		
+
 		stage.addChild(cursor);
 
-		// ensure the cursor is still on top later on, 
+		// ensure the cursor is still on top later on,
 		// when any states/panels have been added
-		this.once("afterInit", function()
+		this.once("afterInit", function ()
 		{
 			this.display.stage.addChild(this.cursor);
 		}, -1);
 	}
-	
+
 	function stageOut(ev)
 	{
 		if (this.cursor)
 			this.cursor.visible = false;
 	}
-	
+
 	function stageIn(ev)
 	{
 		if (this.cursor)
 			this.cursor.visible = true;
 	}
-	
+
 	function onMouseMove(ev)
 	{
 		this.cursor.x = ev.stageX;
 		this.cursor.y = ev.stageY;
 	}
-	
+
 	function onCursorChange(ev)
 	{
 		this._cursorPointer.visible = ev.cursor == "pointer";
@@ -279,7 +293,7 @@
 	}
 
 	// Destroy the animator
-	plugin.teardown = function()
+	plugin.teardown = function ()
 	{
 		var cursor = this.cursor;
 
@@ -292,23 +306,26 @@
 			cursor.removeAllChildren();
 		}
 
-		this.cursor = 
-		this._cursorPointer = 
-		this._cursorDefault = null;
+		this.cursor =
+			this._cursorPointer =
+			this._cursorDefault = null;
 
 		// Unlaod the assets
 		this.unload('CursorAssets');
-		
-		var stage = this.display.stage;
-		stage.removeEventListener("mouseleave", this._stageOut);
-		stage.removeEventListener("mouseenter", this._stageIn);
-		stage.removeEventListener("stagemousemove", this._onMouseMove);
-		stage.removeEventListener("changecursor", this._onCursorChange);
-		
-		this._stageOut = 
-		this._stageIn = 
-		this._onMouseMove = 
-		this._onCursorChange = null;
+
+		if (this.display)
+		{
+			var stage = this.display.stage;
+			stage.removeEventListener("mouseleave", this._stageOut);
+			stage.removeEventListener("mouseenter", this._stageIn);
+			stage.removeEventListener("stagemousemove", this._onMouseMove);
+			stage.removeEventListener("changecursor", this._onCursorChange);
+		}
+
+		this._stageOut =
+			this._stageIn =
+			this._onMouseMove =
+			this._onCursorChange = null;
 	};
 
 }());
